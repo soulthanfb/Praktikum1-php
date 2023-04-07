@@ -16,8 +16,11 @@
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="index.php? hal=pelanggan">Pelanggan</a>
-                            <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                            <a class="nav-link" href="index.php? hal=list_pelanggan">Pelanggan</a>
+                            <a class="nav-link" href="index.php? hal=list_pembelian">Pembelian</a>
+                            <a class="nav-link" href="index.php? hal=list_produk">produk</a>
+                            <a class="nav-link" href="index.php? hal=list_vendor">Vendor</a>
+                            <a class="nav-link" href="index.php? hal=list_kartu">Kartu</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

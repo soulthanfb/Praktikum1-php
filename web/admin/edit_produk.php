@@ -1,8 +1,12 @@
 <?php 
 require_once 'dbkoneksi.php';
 ?>
-
-<form method="POST" action="index.php?hal=proses_pelanggan.php">
+<?php 
+include_once 'top.php';
+include_once 'menu.php';
+?>
+<div class="container">
+<form method="POST" action="index.php? hal=proses_produk.php">
     <div class="form-group row">
         <label for="kode" class="col-4 col-form-label">Kode</label>
         <div class="col-8">
@@ -16,8 +20,9 @@ require_once 'dbkoneksi.php';
             </div>
         </div>
     </div>
+    <br>
     <div class="form-group row">
-        <label for="nama" class="col-4 col-form-label">Nama Custumer</label>
+        <label for="nama" class="col-4 col-form-label">Nama Produk</label>
         <div class="col-8">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -29,8 +34,9 @@ require_once 'dbkoneksi.php';
             </div>
         </div>
     </div>
-    <div class="form-group row mb-2">
-        <label for="jk" class="col-4 col-form-label">Jenis Kelamin</label>
+    <br>
+    <div class="form-group row">
+        <label for="harga_beli" class="col-4 col-form-label">Harga Beli</label>
         <div class="col-8">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -38,17 +44,14 @@ require_once 'dbkoneksi.php';
                         <i class="fa fa-arrow-circle-o-left"></i>
                     </div>
                 </div>
-                <div class="form-check mr-1">
-                    <input id="jk" name="jk" type="radio" value="L" class="form-check-input mr-2"> Laki - Laki 
-                </div>
-                <div class="from-check ">
-                    <input id="jk" name="jk" type="radio" value="P" class="form-check-input mx-1"> Perempuan 
-                </div>
+                <input id="harga_beli" name="harga_beli" value="" type="text"
+                    class="form-control">
             </div>
         </div>
     </div>
+    <br>
     <div class="form-group row">
-        <label for="tmp_lahir" class="col-4 col-form-label">Tempat Lahir</label>
+        <label for="stok" class="col-4 col-form-label">Stok</label>
         <div class="col-8">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -56,25 +59,13 @@ require_once 'dbkoneksi.php';
                         <i class="fa fa-arrow-circle-up"></i>
                     </div>
                 </div>
-                <input id="tmp_lahir" name="tmp_lahir" value="" type="text" class="form-control">
+                <input id="stok" name="stok" value="" type="text" class="form-control">
             </div>
         </div>
     </div>
+    <br>
     <div class="form-group row">
-        <label for="tgl_lahir" class="col-4 col-form-label">Tanggal Lahir</label>
-        <div class="col-8">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fa fa-arrow-circle-up"></i>
-                    </div>
-                </div>
-                <input id="tgl_lahir" name="tgl_lahir" value="" type="date" class="form-control">
-            </div>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="email" class="col-4 col-form-label">Email</label>
+        <label for="min_stok" class="col-4 col-form-label">Minimum Stok</label>
         <div class="col-8">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -82,22 +73,23 @@ require_once 'dbkoneksi.php';
                         <i class="fa fa-arrow-circle-right"></i>
                     </div>
                 </div>
-                <input id="email" name="email" value="" type="text" class="form-control">
+                <input id="min_stok" name="min_stok" value="" type="text" class="form-control">
             </div>
         </div>
     </div>
+    <br>
     <div class="form-group row">
-        <label for="jenis" class="col-4 col-form-label">Jenis Kartu</label>
+        <label for="jenis" class="col-4 col-form-label">Jenis Produk</label>
         <div class="col-8">
             <?php 
-            $sqljenis = "SELECT * FROM kartu";
+            $sqljenis = "SELECT * FROM jenis_produk";
             $rsjenis = $dbh->query($sqljenis);
         ?>
-            <select id="kartu_id" name="kartu_id" class="custom-select">
+            <select id="jenis" name="jenis" class="custom-select">
                 <?php 
             foreach($rsjenis as $rowjenis){
          ?>
-                <option value="<?=$rowjenis['id']?>"><?=$rowjenis['nama']?></option>
+                <option value=""><?=$rowjenis['nama']?></option>
                 <?php
             }
         ?>
@@ -111,7 +103,14 @@ require_once 'dbkoneksi.php';
     </div>
     <div class="form-group row">
         <div class="offset-4 col-8">
-            <input type="submit" name="proses" type="submit" class="btn btn-primary" value="Simpan" />
+            <?php
+              $button = (empty($_idedit)) ? "Simpan":"Update"; 
+            ?>
+            <input type="submit" name="proses" type="submit" class="btn btn-primary" value="<?=$button?>" />
+            <input type="hidden" name="idedit" value="<?=$_idedit?>" />
         </div>
     </div>
 </form>
+<?php 
+include_once 'bottom.php';
+?>

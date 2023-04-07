@@ -1,5 +1,5 @@
 <?php 
-require_once '../dbkoneksi.php';
+require_once 'dbkoneksi.php';
 $_iddel = $_GET['iddel'];
 
 // Delete related records in pesanan_items table
@@ -13,6 +13,6 @@ $st_delete = $dbh->prepare($sql_delete);
 $st_delete->execute([$_iddel]);
 
 // Redirect to product list page
-header('location:list.php');
+header('location:index.php?hal=list_kartu.php');
 
 ?>

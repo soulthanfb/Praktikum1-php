@@ -1,9 +1,12 @@
 <?php 
-require_once '../dbkoneksi.php';
+require_once 'dbkoneksi.php';
 ?>
-
+<?php 
+include_once 'top.php';
+include_once 'menu.php';
+?>
 <div class="container">
-<form method="POST" action="proses.php">
+<form method="POST" action="index.php?hal=proses_kartu.php">
     <div class="form-group row">
         <label for="kode" class="col-4 col-form-label">Kode</label>
         <div class="col-8">
@@ -49,3 +52,6 @@ require_once '../dbkoneksi.php';
     </div>
 </form>
 </div>
+<?php 
+include_once 'bottom.php';
+?>

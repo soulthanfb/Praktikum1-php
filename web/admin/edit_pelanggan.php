@@ -2,7 +2,12 @@
 require_once 'dbkoneksi.php';
 ?>
 
-<form method="POST" action="index.php?hal=proses_pelanggan.php">
+<?php 
+include_once 'top.php';
+include_once 'menu.php';
+?>
+
+<form method="POST" action="index.php?hal=list_pelanggan">
     <div class="form-group row">
         <label for="kode" class="col-4 col-form-label">Kode</label>
         <div class="col-8">
@@ -111,7 +116,14 @@ require_once 'dbkoneksi.php';
     </div>
     <div class="form-group row">
         <div class="offset-4 col-8">
-            <input type="submit" name="proses" type="submit" class="btn btn-primary" value="Simpan" />
+            <?php
+            $button = (empty($_idedit)) ? "Simpan" : "Update";
+            ?>
+            <input type="submit" name="proses" type="submit" class="btn btn-primary" value="<?= $button ?>" />
+            <input type="hidden" name="idedit" value="<?= $_idedit ?>" />
         </div>
     </div>
 </form>
+<?php 
+include_once 'bottom.php';
+?>
